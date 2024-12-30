@@ -67,10 +67,11 @@ function SuggestedArticles() {
       Recently Posted Articles
     </Text>
 
-    <Box my={[2, 5, 10]} width={["90%", "80%", "80%", "80%"]}>
+    <Box my={[2, 5, 10]} width={["100%", "80%", "80%", "50%"]}>
       <InputGroup
         padding={[4, 6, 8]}
         borderRadius="md"
+        w={["100%", "100%", "100%", "100%"]}
         borderWidth="1px"
         borderColor="gray.300"
         bg="white"

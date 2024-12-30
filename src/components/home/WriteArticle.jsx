@@ -4,12 +4,12 @@ import {
   Text,
   Textarea,
   Button,
+  HStack,
 } from "@chakra-ui/react";
-import { Stack } from "@chakra-ui/react";
 import { RadioGroup } from "@chakra-ui/radio";
 import { Radio } from "@chakra-ui/radio";
 import { Divider } from "@chakra-ui/layout";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 import Nav from "../layout/Nav";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
@@ -25,12 +25,12 @@ function WriteArticle() {
   const [articleContent, setArticleContent] = useState("");
   const [loading, setLoading] = useState(false);
   const [visibility, setVisibility] = useState("public");
- 
+
   const history = useNavigate();
 
   const handlePost = async () => {
     if (!title || !subtitle || !articleContent) {
-     toast.info("Please fill all the fields");
+      toast.info("Please fill all the fields");
       return;
     }
 
@@ -52,12 +52,12 @@ function WriteArticle() {
       });
       console.log(result)
       toast.success("Article posted successfully")
-      
+
 
       history("/");
     } catch (err) {
       console.log(err);
-     toast.error("Failed to post article")
+      toast.error("Failed to post article")
     }
 
     setLoading(false);
@@ -75,7 +75,7 @@ function WriteArticle() {
         <Nav />
 
         <Box px={["6", "10"]}>
-          <Text fontSize={["2xl", "7xl"]} textAlign="center" fontWeight={"bold"} >
+          <Text fontSize={["2xl", "3xl"]} textAlign="center">
             Write your heart out!
           </Text>
           <Text fontSize={["sm", "md"]} textAlign="center" color="blue.500">
@@ -85,11 +85,10 @@ function WriteArticle() {
           <Textarea
             variant="unstyled"
             placeholder="Title"
-            fontSize={["4xl", "4xl"]}
-            fontWeight={"bold"}
+            fontSize={["4xl", "5xl"]}
             mt="15"
             resize="vertical"
-            rows={2}
+            rows={1}
             onChange={(e) => setTitle(e.target.value)}
           />
           <Textarea
@@ -97,7 +96,7 @@ function WriteArticle() {
             placeholder="Subtitle"
             fontSize={["xl", "2xl"]}
             resize="vertical"
-            rows={2}
+            rows={1}
             onChange={(e) => setSubtitle(e.target.value)}
           />
 
@@ -121,23 +120,19 @@ function WriteArticle() {
               justifyContent="flex-start"
               alignItems={[null, null, "center"]}
             >
-              <Text fontSize={["xl", "2xl"]} mr="4" mb={[2, 2, 0]} fontWeight={"bold"}>
+              <Text fontSize={["xl", "2xl"]} mr="4" mb={[2, 2, 0]}>
                 Choose your article's visibility
               </Text>
-               <RadioGroup
-               defaultValue="public"
+
+              <RadioGroup
                 onChange={setVisibility}
                 value={visibility}
                 mb={[2, 2, 0]}
-              >
-                 <Stack direction="row" gap={6}>
-                  <Radio value="public" mr="2" isChecked={true} size="lg" colorScheme="blue">
-                    Public
-                  </Radio>
-                  <Radio size="lg" value="private">
-                    Private
-                  </Radio>
-                </Stack> 
+                defaultValue={visibility}>
+                <HStack gap="6" onChange={(e) => setVisibility(e.target.value)}>
+                  <Radio value="public" >Public</Radio>
+                  <Radio value="private" >Private</Radio>
+                </HStack>
               </RadioGroup>
             </Box>
             <Text fontSize={["sm", "md"]} opacity="0.4" mb="2">

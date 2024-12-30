@@ -46,9 +46,11 @@ function Nav() {
   return (
     <Box py="5" px={["6", "10"]} width="100%">
       <Flex justify="center" align="center">
-        <Text as={Link} to="/" fontSize={["2xl", "3xl"]} fontWeight="bold">
-          <Image src={img}  width="150px" height="80px" />
-        </Text>
+       <Link to="/">
+       <Image src={img}  width="150px" height="100px" />
+       </Link>
+         
+        
         <Spacer />
 
         <Box ml="2">

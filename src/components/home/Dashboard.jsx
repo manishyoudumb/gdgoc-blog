@@ -97,7 +97,17 @@ function Dashboard() {
                   It's easy and free to post your thinking on any topic and
                   connect with millions of readers.
                 </Text>
-
+                <Box  display="flex" justifyContent="center" alignItems="center" gap={5} >
+                <Button
+                  as={Link}
+                  to="/write-article"
+                  colorScheme="blue"
+                  isFullWidth
+                  py="8"
+                  mt="6"
+                  fontSize="xl"
+                  rounded={"full"}
+                  >Write</Button>                
                 <Button
                   as={Link}
                   to="/suggested-articles"
@@ -106,9 +116,12 @@ function Dashboard() {
                   py="8"
                   mt="6"
                   fontSize="xl"
+                  rounded={"full"}
                 >
                  Discover More
                 </Button>
+                </Box>
+                
               </Box>
               <Box px="8" d="flex" justifyContent="center" alignItems="center">
                 <motion.div variants={logoVariants} animate="animate">
