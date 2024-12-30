@@ -6,13 +6,14 @@ import {
   Spacer,
   IconButton,
   Button,
+  Image,
 } from "@chakra-ui/react";
 import { Menu,MenuButton,MenuList, MenuItem, MenuGroup, MenuDivider } from "@chakra-ui/menu";
 import { HamburgerIcon,ArrowDownIcon } from "@chakra-ui/icons";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate, Link } from "react-router-dom";
-
+const img= "/image.png"
 
 function Nav() {
   const [width, setWidth] = useState(window.innerWidth);
@@ -46,7 +47,7 @@ function Nav() {
     <Box py="5" px={["6", "10"]} width="100%">
       <Flex justify="center" align="center">
         <Text as={Link} to="/" fontSize={["2xl", "3xl"]} fontWeight="bold">
-          GDGOC Blog
+          <Image src={img}  width="150px" height="80px" />
         </Text>
         <Spacer />
 
@@ -61,11 +62,12 @@ function Nav() {
                 <MenuButton
                   as={IconButton}
                   aria-label="Options"
-                  icon={<HamburgerIcon />}
                   variant="outline"
                   background={"black"}
                   textColor={"white"}
-                />
+                >
+                  <HamburgerIcon/>
+                </MenuButton>
               )}
               <MenuList>
                 <MenuGroup>
